@@ -1,0 +1,75 @@
+{% load staticfiles %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cooler Craigslist</title>
+    <meta name="viewport" content="width=device-width, intitial-scale=1"/>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+</head>
+<body>
+    <nav class="blue">
+        <div class="container nav-wrapper">
+            <!-- Logo links to home/root -->
+            <a href="/" class="brand-logo" style="color:darkblue">Cooler Craigslist</a>
+            <ul id="nav-mobile" class="right">
+                <li>
+                    <a href="/" style="color:darkblue">Home</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+    <h1 style="text-align: center">Search for anything you like. Just like you would on normal Craigslist.</h1>
+    <div class="row">
+        <div class="col s4">
+            <!-- Controls materialize displays -->
+            <!-- Promo Content 1 goes here -->
+            <div class="center">
+                <i class="large material-icons" style="color: darkblue">widgets</i>
+                <p>A useful wrapper for Craigslist.</p>
+                <p class="light center">See Craigslist posts with smooth formatting and image display.</p>
+            </div>
+        </div>
+         <div class="col s4">
+            <!-- Promo Content 2 goes here -->
+            <div class="center">
+                <i class="large material-icons" style="color: darkblue">home</i>
+                <p>Get local results</p>
+                <p class="light center">Returns results for your local Craigslist board.</p>
+            </div>
+        </div>
+
+        <div class="col s4">
+            <!-- Promo Content 3 goes here -->
+            <div class="center">
+                <i class="large material-icons" style="color:darkblue">photo</i>
+                <p>Image Friendly!</p>
+                <p class="light center">Automatically see images for all query results.</p>
+            </div>
+        </div>
+
+        <p>Search Here</p>
+        <!-- CSRF Token needed for submissions -->
+        <!-- Controls search function -->
+        <form action="{% url 'new_search' %}" method="post">
+            {% csrf_token %}
+            <input type="text" name="search" placeholder="Search">
+            <input type="submit" name="submit">
+        </form>
+    </div>
+
+
+        {% block content %}
+
+        {% endblock content %}
+
+    </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</body>
+</html>
